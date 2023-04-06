@@ -41,7 +41,7 @@ const NumericKeyboard = ({
   <View style={styles.view}>
     <View style={styles.row}>
       {values.map(value => (
-        <TouchableOpacity
+        <TouchableOpacity 
           key={value}
           onPress={() => setSelectedValue(value)}
           style={styles.button}>
@@ -49,9 +49,11 @@ const NumericKeyboard = ({
             swapShadows
             style={styles.neomorph}
           >
-          <Text style={styles.text}>
-            {value}
-          </Text>
+            <View style={styles.viewText}>
+              <Text style={styles.text}>
+              {value}
+              </Text>
+            </View>
           </Neomorph>
         </TouchableOpacity>
       ))}
@@ -61,33 +63,39 @@ const NumericKeyboard = ({
 
 const styles = StyleSheet.create({
   view:{
-    paddingStart: 30,
-    paddingEnd: 30, 
+    paddingStart: "20%",
+    paddingEnd: "15%", 
     flex: 1
+  },
+  viewText:{
+    flex:1,
+    justifyContent:'center'
   },
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
   button: {
-    paddingStart: 20,
-    paddingEnd: 20,
-    alignSelf: 'flex-start',
+    paddingStart: '3%',
+    paddingEnd: '3%',
     marginHorizontal: '1%',
-    marginBottom: 20,
-    minWidth: '30%',
+    marginTop: '1%',
+    marginBottom: '2%',
     textAlign: 'center',
+    justifyContent:"center",
   },
   text: {
+    color: 'oldlace',
     textAlign: 'center',
-    color:"#FFF"
+    alignItems:"center",
+    fontSize:32
   },
   neomorph:{
-    shadowRadius: 2,
-    borderRadius: 180,
+    shadowRadius: 3,
+    borderRadius: 100,
     backgroundColor: '#DDDDDD',
     width: 60,
-    height: 30,
+    height: 60,
   }
 });
 

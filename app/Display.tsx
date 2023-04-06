@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Neomorph } from 'react-native-neomorph-shadows';
 
 import React from 'react';
@@ -8,15 +8,16 @@ interface DisplayProps {
 }
 
 const Display = ({values} : DisplayProps) => {
-
   return (
     <Neomorph
     inner 
     swapShadows 
     style={styles.neomorph}>
-      <Text style={styles.text}>
-        {values}
-      </Text>
+      <View style={styles.view}>
+        <Text style={styles.text}>
+          {values}
+        </Text>
+      </View>
     </Neomorph>
   );
 };
@@ -31,10 +32,18 @@ const styles = StyleSheet.create({
     marginBottom:25,
     marginTop:25,
     marginLeft:25,
-    marginRight:25
+    marginRight:25,
+    justifyContent:"center"
   },
   text:{
-    color:'#FFF'
+    color: 'oldlace',
+    alignSelf: 'flex-end',
+    fontSize:32,
+    marginLeft:4,    
+  },
+  view:{
+    marginLeft:15,
+    marginRight:15
   }
 });
 

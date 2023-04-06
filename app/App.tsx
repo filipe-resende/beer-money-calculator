@@ -25,7 +25,7 @@ function App(): JSX.Element {
           <Display values={displayNumber} />
         </View>
         <View>
-          {/* <KeyboardPainel setSelectedValue={setSelectedValue}/> */}
+          <KeyboardPainel setSelectedValue={setSelectedValue}/>
         </View>
       </ScrollView>
     </SafeAreaView>
