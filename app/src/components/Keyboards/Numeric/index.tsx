@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        color: 'oldlace',
+        color: '#818296',
         textAlign: 'center',
         alignItems: 'center',
         fontSize: 32

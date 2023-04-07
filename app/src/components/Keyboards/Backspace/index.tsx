@@ -8,11 +8,11 @@ interface BackspaceKeyboardProps {
 
 const BackspaceKeyboard = ({removeLastDigit}: BackspaceKeyboardProps) => {
     return (
-        <TouchableOpacity onPress={() => removeLastDigit()}>
+        <TouchableOpacity style={styles.touchableOpacity} onPressIn={() => removeLastDigit()}>
             <Neomorph swapShadows style={styles.neomorph}>
                 <View>
-                    <Text>
-                        <Icon name="backspace" size={20} color="oldlace" />
+                    <Text style={styles.text}>
+                        <Icon name="backspace" size={20} color="#818296" />
                     </Text>
                 </View>
             </Neomorph>
@@ -21,12 +21,20 @@ const BackspaceKeyboard = ({removeLastDigit}: BackspaceKeyboardProps) => {
 };
 
 const styles = StyleSheet.create({
+    touchableOpacity:{
+        paddingTop:'1%'
+    },
+    text:{
+        textAlign: 'center',
+    },
     neomorph: {
         shadowRadius: 3,
-        borderRadius: 100,
+        borderRadius: 60,
         backgroundColor: '#DDDDDD',
-        width: 60,
-        height: 60
+        width: 160,
+        height: 60,
+        textAlign: 'center',
+        justifyContent: 'center'
     }
 });
 export default BackspaceKeyboard;
