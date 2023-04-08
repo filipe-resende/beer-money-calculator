@@ -17,36 +17,32 @@ const Display = ({ values }: DisplayProps) => {
     };
 
     return (
-        <Neomorph inner swapShadows style={styles.neomorph}>
-            <View style={styles.view}>
+        <View style={styles.view}>
+            <Neomorph inner swapShadows style={styles.neomorph}>
                 <Text style={styles.text}>R$ {toCurrencyValue(values)}</Text>
-            </View>
-        </Neomorph>
+            </Neomorph>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    view: {
+        alignItems: 'center'
+    },
     neomorph: {
         shadowRadius: 10,
         borderRadius: 40,
         backgroundColor: '#DDDDDD',
         width: 330,
         height: 125,
-        marginBottom: 25,
-        marginTop: 25,
-        marginLeft: 25,
-        marginRight: 25,
+        margin: '5%',
         justifyContent: 'center'
     },
     text: {
         color: '#818296',
         alignSelf: 'flex-end',
         fontSize: 32,
-        marginLeft: 4
-    },
-    view: {
-        marginLeft: 15,
-        marginRight: 15
+        marginEnd: '5%'
     }
 });
 

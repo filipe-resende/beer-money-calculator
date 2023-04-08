@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View, StyleSheet} from 'react-native';
 import Keyboards from './src/components/Keyboards';
 import Display from './src/components/Display';
 import Header from './src/components/Header';
@@ -21,18 +21,28 @@ function App(): JSX.Element {
     };
 
     const subPercentValue = (percent: string) => {
-        const currencyValue = parseFloat(GetCurrencyValue());
-        const total = currencyValue - currencyValue * (Number(percent) / 100);
+        const numericString = GetCurrencyValue().replace(/[^\d.]/g, '');
+        const currencyValue = parseFloat(numericString);
+        const totalCalc =
+            currencyValue - currencyValue * (Number(percent) / 100);
 
-        const displayString = total.toFixed(2).toString().replace(/[.,\s]/g, '');
+        const displayString = totalCalc
+            .toFixed(2)
+            .toString()
+            .replace(/[.,\s]/g, '');
         setDisplayNumber([...displayString]);
     };
 
     const sumPercentValue = (percent: string) => {
-        const currencyValue = parseFloat(GetCurrencyValue());
-        const total = currencyValue + currencyValue * (Number(percent) / 100);
+        const numericString = GetCurrencyValue().replace(/[^\d.]/g, '');
+        const currencyValue = parseFloat(numericString);
+        const totalCalc =
+            currencyValue + currencyValue * (Number(percent) / 100);
 
-        const displayString = total.toFixed(2).toString().replace(/[.,\s]/g, '');
+        const displayString = totalCalc
+            .toFixed(2)
+            .toString()
+            .replace(/[.,\s]/g, '');
         setDisplayNumber([...displayString]);
     };
 
@@ -44,9 +54,7 @@ function App(): JSX.Element {
 
     return (
         <SafeAreaView
-            style={{
-                backgroundColor: '#DDDDDD'
-            }}
+            style={styles.safeAreaView}
         >
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <View>
@@ -70,5 +78,12 @@ function App(): JSX.Element {
         </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    safeAreaView: {
+        backgroundColor: '#DDDDDD',
+        flex:1
+    }
+});
 
 export default App;
