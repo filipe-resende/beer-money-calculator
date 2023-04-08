@@ -1,15 +1,26 @@
+import React, { useState } from 'react';
 import { Neomorph } from 'react-native-neomorph-shadows';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
 interface BackspaceKeyboardProps {
-  removeLastDigit: () => void;
+    removeLastDigit: () => void;
 }
 
-const BackspaceKeyboard = ({removeLastDigit}: BackspaceKeyboardProps) => {
+const BackspaceKeyboard = ({ removeLastDigit }: BackspaceKeyboardProps) => {
+    
+    const [innerNeomorph, setInnerNeomorph] = useState(false);
+
     return (
-        <TouchableOpacity style={styles.touchableOpacity} onPressIn={() => removeLastDigit()}>
-            <Neomorph swapShadows style={styles.neomorph}>
+        <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.touchableOpacity}
+            onPress={() => {
+                removeLastDigit();
+            }}
+            onPressIn={() => setInnerNeomorph(true)}
+            onPressOut={() => setInnerNeomorph(false)}
+        >
+            <Neomorph inner={innerNeomorph} swapShadows style={styles.neomorph}>
                 <View>
                     <Text style={styles.text}>
                         <Icon name="backspace" size={20} color="#818296" />
@@ -21,11 +32,11 @@ const BackspaceKeyboard = ({removeLastDigit}: BackspaceKeyboardProps) => {
 };
 
 const styles = StyleSheet.create({
-    touchableOpacity:{
-        paddingTop:'1%'
+    touchableOpacity: {
+        paddingTop: '1%'
     },
-    text:{
-        textAlign: 'center',
+    text: {
+        textAlign: 'center'
     },
     neomorph: {
         shadowRadius: 3,

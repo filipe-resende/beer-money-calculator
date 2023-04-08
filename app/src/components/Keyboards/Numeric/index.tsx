@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { Neomorph } from 'react-native-neomorph-shadows';
 import BackspaceKeyboard from '../Backspace';
@@ -6,30 +6,58 @@ import BackspaceKeyboard from '../Backspace';
 interface PreviewLayoutProps {
     values: string[];
     setSelectedValue: (value: string) => void;
-    removeLastDigit:() => void;
+    removeLastDigit: () => void;
     children?: React.ReactNode;
 }
 
-const NumericKeyboard = ({ values, setSelectedValue, removeLastDigit }: PreviewLayoutProps) => (
-    <View style={styles.view}>
-        <View style={styles.row}>
-            {values.map((value) => (
-                <TouchableOpacity
-                    key={value}
-                    onPress={() => setSelectedValue(value)}
-                    style={styles.button}
-                >
-                    <Neomorph swapShadows style={styles.neomorph}>
-                        <View style={styles.viewText}>
-                            <Text style={styles.text}>{value}</Text>
-                        </View>
-                    </Neomorph>
-                </TouchableOpacity>
-            ))}
-            <BackspaceKeyboard removeLastDigit={removeLastDigit}/>
+const NumericKeyboard = ({
+    values: keyboards,
+    setSelectedValue,
+    removeLastDigit
+}: PreviewLayoutProps) => {
+    const [innerStates, setInnerStates] = useState<boolean[]>(
+        new Array(keyboards.length).fill(false)
+    );
+
+    return (
+        <View style={styles.view}>
+            <View style={styles.row}>
+                {keyboards.map((keyboard, index) => {
+                    return (
+                        <TouchableOpacity
+                            activeOpacity={0.8}
+                            key={keyboard}
+                            onPress={() => setSelectedValue(keyboard)}
+                            onPressIn={() => {
+                                let newInnerStates = [...innerStates];
+                                newInnerStates[index] = true;
+                                setInnerStates(newInnerStates);
+                            }}
+                            onPressOut={() => {
+                                let newInnerStates = [...innerStates];
+                                newInnerStates[index] = false;
+                                setInnerStates(newInnerStates);
+                            }}
+                            style={styles.button}
+                        >
+                            <Neomorph
+                                key={keyboard}
+                                inner={innerStates[index]}
+                                swapShadows
+                                style={styles.neomorph}
+                            >
+                                <View style={styles.viewText}>
+                                    <Text style={styles.text}>{keyboard}</Text>
+                                </View>
+                            </Neomorph>
+                        </TouchableOpacity>
+                    );
+                })}
+                <BackspaceKeyboard removeLastDigit={removeLastDigit} />
+            </View>
         </View>
-    </View>
-);
+    );
+};
 
 const styles = StyleSheet.create({
     view: {

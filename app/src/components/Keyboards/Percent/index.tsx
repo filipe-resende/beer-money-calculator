@@ -1,44 +1,84 @@
+import React, { useState } from 'react';
 import { Neomorph } from 'react-native-neomorph-shadows';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 interface EqualsKeyboardProps {
-    values: string[];
+    keyboards: string[];
     children?: React.ReactNode;
     sumPercentValue: (value: string) => void;
     subPercentValue: (value: string) => void;
 }
+
 const PercentsKeyboard = ({
-    values,
+    keyboards,
     sumPercentValue,
     subPercentValue
 }: EqualsKeyboardProps) => {
+    const [innerStates, setInnerStates] = useState<boolean[]>(
+        new Array(keyboards.length).fill(false)
+    );
+
+    const [innerStatesSub, setInnerStatesSub] = useState<boolean[]>(
+        new Array(keyboards.length).fill(false)
+    );
+
     return (
         <View style={styles.view}>
             <View style={styles.row}>
-                {values.map((value) => (
+                {keyboards.map((keyboard, index) => (
                     <TouchableOpacity
-                        key={value}
-                        onPress={() => sumPercentValue(value)}
+                        activeOpacity={0.8}
+                        key={keyboard}
+                        onPress={() => sumPercentValue(keyboard)}
+                        onPressIn={() => {
+                            let newInnerStates = [...innerStates];
+                            newInnerStates[index] = true;
+                            setInnerStates(newInnerStates);
+                        }}
+                        onPressOut={() => {
+                            let newInnerStates = [...innerStates];
+                            newInnerStates[index] = false;
+                            setInnerStates(newInnerStates);
+                        }}
                         style={styles.button}
                     >
-                        <Neomorph swapShadows style={styles.neomorph}>
+                        <Neomorph
+                            inner={innerStates[index]}
+                            swapShadows
+                            style={styles.neomorph}
+                        >
                             <View style={styles.viewText}>
-                                <Text style={styles.text}>+ {value}%</Text>
+                                <Text style={styles.text}>+ {keyboard}%</Text>
                             </View>
                         </Neomorph>
                     </TouchableOpacity>
                 ))}
             </View>
             <View style={styles.row}>
-                {values.map((value) => (
+                {keyboards.map((keyboard, index) => (
                     <TouchableOpacity
-                        key={value}
-                        onPress={() => subPercentValue(value)}
+                        activeOpacity={0.8}
+                        key={keyboard}
+                        onPress={() => subPercentValue(keyboard)}
+                        onPressIn={() => {
+                            let newInnerStates = [...innerStatesSub];
+                            newInnerStates[index] = true;
+                            setInnerStatesSub(newInnerStates);
+                        }}
+                        onPressOut={() => {
+                            let newInnerStates = [...innerStatesSub];
+                            newInnerStates[index] = false;
+                            setInnerStatesSub(newInnerStates);
+                        }}
                         style={styles.button}
                     >
-                        <Neomorph swapShadows style={styles.neomorph}>
+                        <Neomorph
+                            inner={innerStatesSub[index]}
+                            swapShadows
+                            style={styles.neomorph}
+                        >
                             <View style={styles.viewText}>
-                                <Text style={styles.text}>- {value}%</Text>
+                                <Text style={styles.text}>- {keyboard}%</Text>
                             </View>
                         </Neomorph>
                     </TouchableOpacity>

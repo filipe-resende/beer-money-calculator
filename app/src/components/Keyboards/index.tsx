@@ -19,7 +19,7 @@ const Keyboards = ({
             <PercentKeyboard
                 sumPercentValue={sumPercentValue}
                 subPercentValue={subPercentValue}
-                values={['5', '10', '15', '20']}
+                keyboards={['5', '10', '15', '20']}
             />
             <NumericKeyboard
                 values={['7', '8', '9', '4', '5', '6', '1', '2', '3', '0']}
