@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, View } from 'react-native';
 import Keyboards from './src/components/Keyboards';
 import Display from './src/components/Display';
 import Header from './src/components/Header';
+import Footer from './src/components/Footer';
 
 function App(): JSX.Element {
     const [displayNumber, setDisplayNumber] = useState(['00']);
@@ -17,6 +18,14 @@ function App(): JSX.Element {
             .toFixed(2)
             .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         return currencyValue == 'NaN' ? '0' : currencyValue;
+    };
+
+    const subPercentValue = (percent: string) => {
+        const currencyValue = parseFloat(GetCurrencyValue());
+        const total = currencyValue - currencyValue * (Number(percent) / 100);
+
+        const displayString = total.toFixed(2).toString().replace(/[.,\s]/g, '');
+        setDisplayNumber([...displayString]);
     };
 
     const sumPercentValue = (percent: string) => {
@@ -49,9 +58,13 @@ function App(): JSX.Element {
                 <View>
                     <Keyboards
                         sumPercentValue={sumPercentValue}
+                        subPercentValue={subPercentValue}
                         setSelectedValue={setSelectedValue}
                         removeLastDigit={removeLastDigit}
                     />
+                </View>
+                <View>
+                    <Footer />
                 </View>
             </ScrollView>
         </SafeAreaView>

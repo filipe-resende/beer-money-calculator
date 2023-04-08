@@ -5,17 +5,20 @@ interface KeyboardProps {
     setSelectedValue: (value: string) => void;
     removeLastDigit: () => void;
     sumPercentValue: (value: string) => void;
+    subPercentValue: (value: string) => void;
 }
 
 const Keyboards = ({
     setSelectedValue,
     removeLastDigit,
-    sumPercentValue
+    sumPercentValue,
+    subPercentValue
 }: KeyboardProps) => {
     return (
         <>
             <PercentKeyboard
                 sumPercentValue={sumPercentValue}
+                subPercentValue={subPercentValue}
                 values={['5', '10', '15', '20']}
             />
             <NumericKeyboard

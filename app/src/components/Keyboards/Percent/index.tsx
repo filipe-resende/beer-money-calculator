@@ -5,8 +5,13 @@ interface EqualsKeyboardProps {
     values: string[];
     children?: React.ReactNode;
     sumPercentValue: (value: string) => void;
+    subPercentValue: (value: string) => void;
 }
-const PercentsKeyboard = ({ values, sumPercentValue }: EqualsKeyboardProps) => {
+const PercentsKeyboard = ({
+    values,
+    sumPercentValue,
+    subPercentValue
+}: EqualsKeyboardProps) => {
     return (
         <View style={styles.view}>
             <View style={styles.row}>
@@ -28,7 +33,7 @@ const PercentsKeyboard = ({ values, sumPercentValue }: EqualsKeyboardProps) => {
                 {values.map((value) => (
                     <TouchableOpacity
                         key={value}
-                        onPress={() => sumPercentValue(value)}
+                        onPress={() => subPercentValue(value)}
                         style={styles.button}
                     >
                         <Neomorph swapShadows style={styles.neomorph}>
@@ -53,6 +58,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     row: {
+        justifyContent: 'center',
         flexDirection: 'row',
         flexWrap: 'wrap'
     },
