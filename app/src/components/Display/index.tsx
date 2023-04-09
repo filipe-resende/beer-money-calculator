@@ -13,7 +13,7 @@ const Display = ({ values }: DisplayProps) => {
         const currencyValue = (parseFloat(number) / 100)
             .toFixed(2)
             .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        return currencyValue == 'NaN' ? 0 : currencyValue;
+        return currencyValue == 'NaN' ? "0.00" : currencyValue;
     };
 
     return (

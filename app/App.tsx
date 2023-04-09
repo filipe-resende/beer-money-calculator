@@ -81,7 +81,7 @@ function App(): JSX.Element {
 
 const styles = StyleSheet.create({
     safeAreaView: {
-        backgroundColor: '#DDDDDD',
+        backgroundColor: '#DDDDDD', //#eceff8
         flex:1
     }
 });
