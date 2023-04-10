@@ -1,5 +1,5 @@
-import PercentKeyboard from './Percent';
-import NumericKeyboard from './Numeric';
+import PercentKeyboard from './percent';
+import NumericKeyboard from './numeric';
 
 interface KeyboardProps {
     setSelectedValue: (value: string) => void;

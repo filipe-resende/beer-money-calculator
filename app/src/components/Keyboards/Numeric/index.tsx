@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { Neomorph } from 'react-native-neomorph-shadows';
-import BackspaceKeyboard from '../Backspace';
+import BackspaceKeyboard from '../backspace';
+import { NumericStyles } from '../../../../pages/calculator/style';
 
 interface PreviewLayoutProps {
     values: string[];
@@ -20,8 +21,8 @@ const NumericKeyboard = ({
     );
 
     return (
-        <View style={styles.view}>
-            <View style={styles.row}>
+        <View style={NumericStyles.view}>
+            <View style={NumericStyles.row}>
                 {keyboards.map((keyboard, index) => {
                     return (
                         <TouchableOpacity
@@ -38,16 +39,18 @@ const NumericKeyboard = ({
                                 newInnerStates[index] = false;
                                 setInnerStates(newInnerStates);
                             }}
-                            style={styles.button}
+                            style={NumericStyles.button}
                         >
                             <Neomorph
                                 key={keyboard}
                                 inner={innerStates[index]}
                                 swapShadows
-                                style={styles.neomorph}
+                                style={NumericStyles.neomorph}
                             >
-                                <View style={styles.viewText}>
-                                    <Text style={styles.text}>{keyboard}</Text>
+                                <View style={NumericStyles.viewText}>
+                                    <Text style={NumericStyles.text}>
+                                        {keyboard}
+                                    </Text>
                                 </View>
                             </Neomorph>
                         </TouchableOpacity>
@@ -58,43 +61,5 @@ const NumericKeyboard = ({
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    view: {
-        paddingStart: '20%',
-        paddingEnd: '15%',
-        flex: 1
-    },
-    viewText: {
-        flex: 1,
-        justifyContent: 'center'
-    },
-    row: {
-        flexDirection: 'row',
-        flexWrap: 'wrap'
-    },
-    button: {
-        paddingStart: '3%',
-        paddingEnd: '3%',
-        marginHorizontal: '1%',
-        marginTop: '1%',
-        marginBottom: '2%',
-        textAlign: 'center',
-        justifyContent: 'center'
-    },
-    text: {
-        color: '#818296',
-        textAlign: 'center',
-        alignItems: 'center',
-        fontSize: 32
-    },
-    neomorph: {
-        shadowRadius: 3,
-        borderRadius: 100,
-        backgroundColor: '#DDDDDD',
-        width: 60,
-        height: 60
-    }
-});
 
 export default NumericKeyboard;

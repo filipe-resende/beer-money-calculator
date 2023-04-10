@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Neomorph } from 'react-native-neomorph-shadows';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { PercentStyles } from '../../../../pages/calculator/style';
 
 interface EqualsKeyboardProps {
     keyboards: string[];
@@ -23,8 +24,8 @@ const PercentsKeyboard = ({
     );
 
     return (
-        <View style={styles.view}>
-            <View style={styles.row}>
+        <View style={PercentStyles.view}>
+            <View style={PercentStyles.row}>
                 {keyboards.map((keyboard, index) => (
                     <TouchableOpacity
                         activeOpacity={0.8}
@@ -40,21 +41,23 @@ const PercentsKeyboard = ({
                             newInnerStates[index] = false;
                             setInnerStates(newInnerStates);
                         }}
-                        style={styles.button}
+                        style={PercentStyles.button}
                     >
                         <Neomorph
                             inner={innerStates[index]}
                             swapShadows
-                            style={styles.neomorph}
+                            style={PercentStyles.neomorph}
                         >
-                            <View style={styles.viewText}>
-                                <Text style={styles.text}>+ {keyboard}%</Text>
+                            <View style={PercentStyles.viewText}>
+                                <Text style={PercentStyles.text}>
+                                    + {keyboard}%
+                                </Text>
                             </View>
                         </Neomorph>
                     </TouchableOpacity>
                 ))}
             </View>
-            <View style={styles.row}>
+            <View style={PercentStyles.row}>
                 {keyboards.map((keyboard, index) => (
                     <TouchableOpacity
                         activeOpacity={0.8}
@@ -70,15 +73,17 @@ const PercentsKeyboard = ({
                             newInnerStates[index] = false;
                             setInnerStatesSub(newInnerStates);
                         }}
-                        style={styles.button}
+                        style={PercentStyles.button}
                     >
                         <Neomorph
                             inner={innerStatesSub[index]}
                             swapShadows
-                            style={styles.neomorph}
+                            style={PercentStyles.neomorph}
                         >
-                            <View style={styles.viewText}>
-                                <Text style={styles.text}>- {keyboard}%</Text>
+                            <View style={PercentStyles.viewText}>
+                                <Text style={PercentStyles.text}>
+                                    - {keyboard}%
+                                </Text>
                             </View>
                         </Neomorph>
                     </TouchableOpacity>
@@ -88,41 +93,4 @@ const PercentsKeyboard = ({
     );
 };
 
-const styles = StyleSheet.create({
-    view: {
-        marginBottom: '2%',
-        flex: 1
-    },
-    viewText: {
-        flex: 1,
-        justifyContent: 'center'
-    },
-    row: {
-        justifyContent: 'center',
-        flexDirection: 'row',
-        flexWrap: 'wrap'
-    },
-    button: {
-        paddingStart: '3%',
-        paddingEnd: '3%',
-        marginHorizontal: '1%',
-        marginTop: '1%',
-        marginBottom: '2%',
-        textAlign: 'center',
-        justifyContent: 'center'
-    },
-    text: {
-        color: '#818296',
-        textAlign: 'center',
-        alignItems: 'center',
-        fontSize: 20
-    },
-    neomorph: {
-        shadowRadius: 3,
-        borderRadius: 10,
-        backgroundColor: '#DDDDDD',
-        width: 60,
-        height: 60
-    }
-});
 export default PercentsKeyboard;
