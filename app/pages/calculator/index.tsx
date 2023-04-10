@@ -37,14 +37,18 @@ function Calculator(): JSX.Element {
 
     const percentCalc = (percent: string, isSub: boolean) => {
         const currencyValue = convertToNumber();
-
         const totalCalc = isSub
             ? currencyValue + currencyValue * (Number(percent) / 100)
             : currencyValue - currencyValue * (Number(percent) / 100);
 
         const displayString = converterToString(totalCalc);
 
-        updateHistoricDisplay(percent, isSub);
+        if (
+            displayNumber.length &&
+            displayNumber.some((value) => value !== '0')
+        )
+            updateHistoricDisplay(percent, isSub);
+
         setDisplayNumber([...displayString]);
     };
 
