@@ -1,61 +1,55 @@
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, View, StyleSheet} from 'react-native';
-import Keyboards from '../../src/components/keyboards'; 
-import Display from '../../src/components/display'; 
-import Header from '../../src/components/header'; 
-import Footer from '../../src/components/footer'; 
+import { SafeAreaView, ScrollView, View } from 'react-native';
+import Keyboards from '../../src/components/keyboards';
+import Display from '../../src/components/display';
+import Header from '../../src/components/header';
+import Footer from '../../src/components/footer';
+import { CalculatorStyles } from './style';
+import { GetCurrencyValue } from '../../utils';
 
 function Calculator(): JSX.Element {
-    const [displayNumber, setDisplayNumber] = useState(['00']);
+    const [displayNumber, setDisplayNumber] = useState<string[]>([]);
 
     const setSelectedValue = (message: string) => {
         setDisplayNumber([...displayNumber, message]);
     };
 
-    const GetCurrencyValue = (): string => {
-        const number = displayNumber.join('');
-        const currencyValue = (parseFloat(number) / 100)
-            .toFixed(2)
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        return currencyValue == 'NaN' ? '0' : currencyValue;
-    };
-
-    const subPercentValue = (percent: string) => {
-        const numericString = GetCurrencyValue().replace(/[^\d.]/g, '');
-        const currencyValue = parseFloat(numericString);
-        const totalCalc =
-            currencyValue - currencyValue * (Number(percent) / 100);
-
-        const displayString = totalCalc
-            .toFixed(2)
-            .toString()
-            .replace(/[.,\s]/g, '');
-        setDisplayNumber([...displayString]);
-    };
-
-    const sumPercentValue = (percent: string) => {
-        const numericString = GetCurrencyValue().replace(/[^\d.]/g, '');
-        const currencyValue = parseFloat(numericString);
-        const totalCalc =
-            currencyValue + currencyValue * (Number(percent) / 100);
-
-        const displayString = totalCalc
-            .toFixed(2)
-            .toString()
-            .replace(/[.,\s]/g, '');
-        setDisplayNumber([...displayString]);
-    };
-
     const removeLastDigit = () => {
-        const copyArr = [...displayNumber];
-        copyArr.splice(-1);
-        setDisplayNumber(copyArr);
+        const displayNumbers = [...displayNumber];
+        displayNumbers.splice(-1);
+        setDisplayNumber(displayNumbers);
+    };
+
+    const percentCalc = (percent: string, isSub: boolean) => {
+        const currencyValue = convertToNumber();
+
+        const totalCalc = isSub
+            ? currencyValue + currencyValue * (Number(percent) / 100)
+            : currencyValue - currencyValue * (Number(percent) / 100);
+
+        const displayString = converterToString(totalCalc);
+
+        setDisplayNumber([...displayString]);
+    };
+
+    const converterToString = (totalCalc: number) => {
+        return totalCalc
+            .toFixed(2)
+            .toString()
+            .replace(/[.,\s]/g, '');
+    };
+
+    const convertToNumber = () => {
+        const numericString = GetCurrencyValue(displayNumber).replace(
+            /[^\d.]/g,
+            ''
+        );
+        const currencyValue = parseFloat(numericString);
+        return currencyValue;
     };
 
     return (
-        <SafeAreaView
-            style={styles.safeAreaView}
-        >
+        <SafeAreaView style={CalculatorStyles.safeAreaView}>
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <View>
                     <Header />
@@ -65,8 +59,7 @@ function Calculator(): JSX.Element {
                 </View>
                 <View>
                     <Keyboards
-                        sumPercentValue={sumPercentValue}
-                        subPercentValue={subPercentValue}
+                        percentCalc={percentCalc}
                         setSelectedValue={setSelectedValue}
                         removeLastDigit={removeLastDigit}
                     />
@@ -78,12 +71,5 @@ function Calculator(): JSX.Element {
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    safeAreaView: {
-        backgroundColor: '#DDDDDD', //#eceff8
-        flex:1
-    }
-});
 
 export default Calculator;

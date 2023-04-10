@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { Neomorph } from 'react-native-neomorph-shadows';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { PercentStyles } from '../../../../pages/calculator/style';
 
 interface EqualsKeyboardProps {
     keyboards: string[];
     children?: React.ReactNode;
-    sumPercentValue: (value: string) => void;
-    subPercentValue: (value: string) => void;
+    percentCalc: (percent: string, isSub: boolean) => void;
 }
 
-const PercentsKeyboard = ({
-    keyboards,
-    sumPercentValue,
-    subPercentValue
-}: EqualsKeyboardProps) => {
+const PercentsKeyboard = ({ keyboards, percentCalc }: EqualsKeyboardProps) => {
     const [innerStates, setInnerStates] = useState<boolean[]>(
         new Array(keyboards.length).fill(false)
     );
@@ -30,7 +25,7 @@ const PercentsKeyboard = ({
                     <TouchableOpacity
                         activeOpacity={0.8}
                         key={keyboard}
-                        onPress={() => sumPercentValue(keyboard)}
+                        onPress={() => percentCalc(keyboard, true)}
                         onPressIn={() => {
                             let newInnerStates = [...innerStates];
                             newInnerStates[index] = true;
@@ -62,7 +57,7 @@ const PercentsKeyboard = ({
                     <TouchableOpacity
                         activeOpacity={0.8}
                         key={keyboard}
-                        onPress={() => subPercentValue(keyboard)}
+                        onPress={() => percentCalc(keyboard, false)}
                         onPressIn={() => {
                             let newInnerStates = [...innerStatesSub];
                             newInnerStates[index] = true;

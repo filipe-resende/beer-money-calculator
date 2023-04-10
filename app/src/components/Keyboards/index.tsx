@@ -4,21 +4,18 @@ import NumericKeyboard from './numeric';
 interface KeyboardProps {
     setSelectedValue: (value: string) => void;
     removeLastDigit: () => void;
-    sumPercentValue: (value: string) => void;
-    subPercentValue: (value: string) => void;
+    percentCalc: (percent: string, isSub: boolean) => void;
 }
 
 const Keyboards = ({
     setSelectedValue,
     removeLastDigit,
-    sumPercentValue,
-    subPercentValue
+    percentCalc
 }: KeyboardProps) => {
     return (
         <>
             <PercentKeyboard
-                sumPercentValue={sumPercentValue}
-                subPercentValue={subPercentValue}
+                percentCalc={percentCalc}
                 keyboards={['5', '10', '15', '20']}
             />
             <NumericKeyboard
