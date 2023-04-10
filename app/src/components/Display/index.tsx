@@ -6,14 +6,20 @@ import { DisplayStyles } from '../../../pages/calculator/style';
 import { FormatNumber } from '../../../utils';
 
 interface DisplayProps {
-    values: string[];
+    keyboards: string[];
+    historicKeyboards: string;
 }
 
-const Display = ({ values }: DisplayProps) => {
+const Display = ({ keyboards, historicKeyboards }: DisplayProps) => {
     return (
         <View style={DisplayStyles.view}>
             <Neomorph inner swapShadows style={DisplayStyles.neomorph}>
-                <Text style={DisplayStyles.text}>{FormatNumber(values)}</Text>
+                <Text style={DisplayStyles.historicText}>
+                    {historicKeyboards}
+                </Text>
+                <Text style={DisplayStyles.text}>
+                    {FormatNumber(keyboards)}
+                </Text>
             </Neomorph>
         </View>
     );

@@ -140,9 +140,9 @@ const PercentStyles = StyleSheet.create({
     }
 });
 
-const DisplayStyles = StyleSheet.create({
+const HistoricStyles = StyleSheet.create({
     view: {
-        alignItems: 'center'
+        alignItems: 'flex-end'
     },
     neomorph: {
         shadowRadius: 10,
@@ -161,6 +161,33 @@ const DisplayStyles = StyleSheet.create({
     }
 });
 
+const DisplayStyles = StyleSheet.create({
+    view: {
+        alignItems: 'center'
+    },
+    neomorph: {
+        shadowRadius: 10,
+        borderRadius: 40,
+        backgroundColor: '#DDDDDD',
+        width: 330,
+        height: 125,
+        margin: '5%',
+        justifyContent: 'center'
+    },
+    text: {
+        color: '#818296',
+        alignSelf: 'flex-end',
+        fontSize: 32,
+        marginEnd: '5%'
+    },
+    historicText: {
+        color: '#818296',
+        alignSelf: 'flex-end',
+        fontSize: 12,
+        marginEnd: '5%'
+    }
+});
+
 export {
     CalculatorStyles,
     HeaderStyles,
@@ -168,5 +195,6 @@ export {
     BackspaceStyles,
     NumericStyles,
     PercentStyles,
-    DisplayStyles
+    DisplayStyles,
+    HistoricStyles
 };

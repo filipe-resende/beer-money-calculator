@@ -5,16 +5,31 @@ import Display from '../../src/components/display';
 import Header from '../../src/components/header';
 import Footer from '../../src/components/footer';
 import { CalculatorStyles } from './style';
-import { GetCurrencyValue } from '../../utils';
+import { FormatNumber, GetCurrencyValue } from '../../utils';
 
 function Calculator(): JSX.Element {
+    const [historicDisplay, setHistoricDisplay] = useState<string>('');
     const [displayNumber, setDisplayNumber] = useState<string[]>([]);
 
-    const setSelectedValue = (message: string) => {
-        setDisplayNumber([...displayNumber, message]);
+    const updateHistoricDisplay = (percent: string, isSub: boolean) => {
+        const historicValue = `${FormatNumber(displayNumber)} ${
+            isSub ? '+' : '-'
+        } ${percent}% = `;
+
+        setHistoricDisplay(historicValue);
+    };
+
+    const cleanHistoricDisplay = () => {
+        setHistoricDisplay('');
+    };
+
+    const setSelectedValue = (number: string) => {
+        cleanHistoricDisplay();
+        setDisplayNumber([...displayNumber, number]);
     };
 
     const removeLastDigit = () => {
+        cleanHistoricDisplay();
         const displayNumbers = [...displayNumber];
         displayNumbers.splice(-1);
         setDisplayNumber(displayNumbers);
@@ -29,6 +44,7 @@ function Calculator(): JSX.Element {
 
         const displayString = converterToString(totalCalc);
 
+        updateHistoricDisplay(percent, isSub);
         setDisplayNumber([...displayString]);
     };
 
@@ -55,7 +71,10 @@ function Calculator(): JSX.Element {
                     <Header />
                 </View>
                 <View>
-                    <Display values={displayNumber} />
+                    <Display
+                        keyboards={displayNumber}
+                        historicKeyboards={historicDisplay}
+                    />
                 </View>
                 <View>
                     <Keyboards
