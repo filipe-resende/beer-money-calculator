@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { Neomorph } from 'react-native-neomorph-shadows';
-import BackspaceKeyboard from '../backspace';
+import BackspaceKeyboard from '../Backspace';
 import { NumericStyles } from '../../../../pages/calculator/style';
 
 interface PreviewLayoutProps {

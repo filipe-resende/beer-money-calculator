@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
-import Keyboards from '../../src/components/keyboards';
-import Display from '../../src/components/display';
-import Header from '../../src/components/header';
-import Footer from '../../src/components/footer';
+import Keyboards from '../../src/components/Keyboards';
+import Display from '../../src/components/Display';
+import Header from '../../src/components/Header';
+import Footer from '../../src/components/Footer';
 import { CalculatorStyles } from './style';
 import { FormatNumber, GetCurrencyValue } from '../../utils';
 
