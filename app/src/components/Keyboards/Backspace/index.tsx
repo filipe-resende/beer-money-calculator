@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Neomorph } from 'react-native-neomorph-shadows';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { BackspaceStyles } from '../../../../pages/calculator/style';
+import { BackspaceStyles, textColor } from '../../../../pages/calculator/style';
 
 interface BackspaceKeyboardProps {
     removeLastDigit: () => void;
@@ -33,7 +33,7 @@ const BackspaceKeyboard = ({
             >
                 <View>
                     <Text style={BackspaceStyles.text}>
-                        <Icon name="backspace" size={20} color="#818296" />
+                        <Icon name="backspace" size={20} color={textColor} />
                     </Text>
                 </View>
             </Neomorph>

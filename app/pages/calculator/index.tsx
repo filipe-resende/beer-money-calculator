@@ -6,6 +6,7 @@ import Header from '../../src/components/Header';
 import Footer from '../../src/components/Footer';
 import { CalculatorStyles, backgroundColor } from './style';
 import { FormatNumber, GetCurrencyValue } from '../../utils';
+import LinearGradient from 'react-native-linear-gradient';
 
 function Calculator(): JSX.Element {
     const [historicDisplay, setHistoricDisplay] = useState<string>('');
@@ -24,15 +25,13 @@ function Calculator(): JSX.Element {
     };
 
     const cleanDisplay = () => {
-        setDisplayNumber(["000"]);
+        setDisplayNumber(['000']);
     };
 
     const setSelectedValue = (number: string) => {
         cleanHistoricDisplay();
         setDisplayNumber([...displayNumber, number]);
     };
-
-
 
     const removeAllDigits = () => {
         cleanHistoricDisplay();
@@ -87,26 +86,34 @@ function Calculator(): JSX.Element {
                 barStyle="light-content"
             />
             <ScrollView contentInsetAdjustmentBehavior="automatic">
-                <View>
-                    <Header />
-                </View>
-                <View>
-                    <Display
-                        keyboards={displayNumber}
-                        historicKeyboards={historicDisplay}
-                    />
-                </View>
-                <View>
-                    <Keyboards
-                        percentCalc={percentCalc}
-                        setSelectedValue={setSelectedValue}
-                        removeAllDigits={removeAllDigits}
-                        removeLastDigit={removeLastDigit}
-                    />
-                </View>
-                <View>
-                    <Footer />
-                </View>
+                <LinearGradient
+                    start={{ x: 0.0, y: 0.8 }}
+                    end={{ x: 0.0, y: 1.2 }}
+                    locations={[0, 0.1, 0.5]}
+                    colors={[backgroundColor, backgroundColor, '#FFFFFF']}
+                    style={CalculatorStyles.linearGradient}
+                >
+                    <View>
+                        <Header />
+                    </View>
+                    <View>
+                        <Display
+                            keyboards={displayNumber}
+                            historicKeyboards={historicDisplay}
+                        />
+                    </View>
+                    <View>
+                        <Keyboards
+                            percentCalc={percentCalc}
+                            setSelectedValue={setSelectedValue}
+                            removeAllDigits={removeAllDigits}
+                            removeLastDigit={removeLastDigit}
+                        />
+                    </View>
+                    <View>
+                        <Footer />
+                    </View>
+                </LinearGradient>
             </ScrollView>
         </SafeAreaView>
     );

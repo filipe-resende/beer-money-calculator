@@ -58,7 +58,10 @@ const NumericKeyboard = ({
                         </TouchableOpacity>
                     );
                 })}
-                <BackspaceKeyboard removeAllDigits={removeAllDigits} removeLastDigit={removeLastDigit} />
+                <BackspaceKeyboard
+                    removeAllDigits={removeAllDigits}
+                    removeLastDigit={removeLastDigit}
+                />
             </View>
         </View>
     );

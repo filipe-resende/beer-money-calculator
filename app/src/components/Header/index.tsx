@@ -7,7 +7,7 @@ import {
     View
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { HeaderStyles } from '../../../pages/calculator/style';
+import { HeaderStyles, textColor } from '../../../pages/calculator/style';
 
 const Header = () => {
     const statusBarHeight = StatusBar.currentHeight
@@ -18,7 +18,7 @@ const Header = () => {
             <Neomorph swapShadows style={HeaderStyles.neomorph}>
                 <TouchableOpacity onPressIn={() => BackHandler.exitApp()}>
                     <Text style={HeaderStyles.text}>
-                        <Icon name="power-off" size={20} color="#818296" />
+                        <Icon name="power-off" size={20} color={textColor} />
                     </Text>
                 </TouchableOpacity>
             </Neomorph>

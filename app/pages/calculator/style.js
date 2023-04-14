@@ -1,13 +1,16 @@
 import { StyleSheet } from 'react-native';
 
-export const backgroundColor = '#e2ecf6';
-const textColor = '#818296';
+export const backgroundColor = '#B4BACA';
+export const textColor = '#676878';
 const shadowRadius = 4;
 
 const CalculatorStyles = StyleSheet.create({
     safeAreaView: {
         flex: 1,
-        backgroundColor: backgroundColor
+        backgroundColor: '#FFFFFF'
+    },
+    linearGradient: {
+        flex: 1
     }
 });
 
@@ -108,8 +111,8 @@ const NumericStyles = StyleSheet.create({
         backgroundColor: backgroundColor,
         shadowRadius: shadowRadius,
         borderRadius: 100,
-        width: 58,
-        height: 58
+        width: 60,
+        height: 60
     }
 });
 
@@ -179,7 +182,8 @@ const HistoricStyles = StyleSheet.create({
 
 const DisplayStyles = StyleSheet.create({
     touchableOpacity: {
-        padding: '5%'
+        paddingTop: '2%',
+        paddingBottom: '4%'
     },
     view: {
         alignItems: 'center'
@@ -187,11 +191,21 @@ const DisplayStyles = StyleSheet.create({
     neomorphOut: {
         shadowRadius: 3,
         borderRadius: 40,
-        backgroundColor: '#e2ecf6',
+        backgroundColor: backgroundColor,
         width: 330,
         height: 140,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    linearGradient: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        borderRadius: 40,
+        position: 'absolute',
+        zIndex: 1
     },
     neomorphInner: {
         justifyContent: 'center',
@@ -207,7 +221,7 @@ const DisplayStyles = StyleSheet.create({
         borderTopRightRadius: 20
     },
     text: {
-        color: 'rgba(64, 66, 62, 1)',
+        color: '#42434D',
         alignSelf: 'flex-end',
         fontSize: 36,
         marginEnd: '5%',
@@ -215,7 +229,7 @@ const DisplayStyles = StyleSheet.create({
         letterSpacing: 5
     },
     historicText: {
-        color: 'rgba(64, 66, 62, 0.50)',
+        color: 'rgba(64, 66, 62, 0.65)',
         alignSelf: 'flex-end',
         fontFamily: 'Quartz-Bold',
         fontSize: 20,
