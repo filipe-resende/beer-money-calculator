@@ -6,9 +6,13 @@ import { BackspaceStyles } from '../../../../pages/calculator/style';
 
 interface BackspaceKeyboardProps {
     removeLastDigit: () => void;
+    removeAllDigits: () => void;
 }
 
-const BackspaceKeyboard = ({ removeLastDigit }: BackspaceKeyboardProps) => {
+const BackspaceKeyboard = ({
+    removeLastDigit,
+    removeAllDigits
+}: BackspaceKeyboardProps) => {
     const [innerNeomorph, setInnerNeomorph] = useState(false);
 
     return (
@@ -18,6 +22,7 @@ const BackspaceKeyboard = ({ removeLastDigit }: BackspaceKeyboardProps) => {
             onPress={() => {
                 removeLastDigit();
             }}
+            onLongPress={() => removeAllDigits()}
             onPressIn={() => setInnerNeomorph(true)}
             onPressOut={() => setInnerNeomorph(false)}
         >

@@ -1,5 +1,6 @@
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Neomorph } from 'react-native-neomorph-shadows';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 import React from 'react';
 import { DisplayStyles } from '../../../pages/calculator/style';
@@ -12,16 +13,23 @@ interface DisplayProps {
 
 const Display = ({ keyboards, historicKeyboards }: DisplayProps) => {
     return (
-        <View style={DisplayStyles.view}>
-            <Neomorph inner swapShadows style={DisplayStyles.neomorph}>
-                <Text style={DisplayStyles.historicText}>
-                    {historicKeyboards}
-                </Text>
-                <Text style={DisplayStyles.text}>
-                    {FormatNumber(keyboards)}
-                </Text>
-            </Neomorph>
-        </View>
+        <TouchableOpacity
+            style={DisplayStyles.touchableOpacity}
+            onPress={() => Clipboard.setString(historicKeyboards)}
+        >
+            <View style={DisplayStyles.view}>
+                <Neomorph style={DisplayStyles.neomorphOut}>
+                    <Neomorph inner={false} style={DisplayStyles.neomorphInner}>
+                        <Text style={DisplayStyles.historicText}>
+                            {historicKeyboards}
+                        </Text>
+                        <Text style={DisplayStyles.text}>
+                            {FormatNumber(keyboards)}
+                        </Text>
+                    </Neomorph>
+                </Neomorph>
+            </View>
+        </TouchableOpacity>
     );
 };
 

@@ -8,13 +8,15 @@ interface PreviewLayoutProps {
     values: string[];
     setSelectedValue: (value: string) => void;
     removeLastDigit: () => void;
+    removeAllDigits: () => void;
     children?: React.ReactNode;
 }
 
 const NumericKeyboard = ({
     values: keyboards,
     setSelectedValue,
-    removeLastDigit
+    removeLastDigit,
+    removeAllDigits
 }: PreviewLayoutProps) => {
     const [innerStates, setInnerStates] = useState<boolean[]>(
         new Array(keyboards.length).fill(false)
@@ -56,7 +58,7 @@ const NumericKeyboard = ({
                         </TouchableOpacity>
                     );
                 })}
-                <BackspaceKeyboard removeLastDigit={removeLastDigit} />
+                <BackspaceKeyboard removeAllDigits={removeAllDigits} removeLastDigit={removeLastDigit} />
             </View>
         </View>
     );

@@ -14,6 +14,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-app-appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-app-appTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B9BA6C1970A94D499647664B /* Quartz-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A9E2AC3EA0A64A75B3D4ADD3 /* Quartz-Bold.otf */; };
+		6941B08502C54DA9B4EB90DC /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F93E593853D14969AFF6E231 /* Gilroy-Bold.ttf */; };
+		840C9E7F14AE4F3EAF824BD5 /* Quartz-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9426A83E6D148A091AABF78 /* Quartz-Bold.ttf */; };
+		798ECD54A5BA4DDD9A30E8DD /* react-native.config.js in Resources */ = {isa = PBXBuildFile; fileRef = 6DB34B4DBB3F49C5B807E812 /* react-native.config.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = app/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-app-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app-appTests.release.xcconfig"; path = "Target Support Files/Pods-app-appTests/Pods-app-appTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A9E2AC3EA0A64A75B3D4ADD3 /* Quartz-Bold.otf */ = {isa = PBXFileReference; name = "Quartz-Bold.otf"; path = "../assets/fonts/Quartz-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F93E593853D14969AFF6E231 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; name = "Gilroy-Bold.ttf"; path = "../assets/fonts/Gilroy-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A9426A83E6D148A091AABF78 /* Quartz-Bold.ttf */ = {isa = PBXFileReference; name = "Quartz-Bold.ttf"; path = "../assets/fonts/Quartz-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6DB34B4DBB3F49C5B807E812 /* react-native.config.js */ = {isa = PBXFileReference; name = "react-native.config.js"; path = "../assets/fonts/react-native.config.js"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				8EBF4E94AD594F44977215A6 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +156,18 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		8EBF4E94AD594F44977215A6 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				A9E2AC3EA0A64A75B3D4ADD3 /* Quartz-Bold.otf */,
+				F93E593853D14969AFF6E231 /* Gilroy-Bold.ttf */,
+				A9426A83E6D148A091AABF78 /* Quartz-Bold.ttf */,
+				6DB34B4DBB3F49C5B807E812 /* react-native.config.js */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +265,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				B9BA6C1970A94D499647664B /* Quartz-Bold.otf in Resources */,
+				6941B08502C54DA9B4EB90DC /* Gilroy-Bold.ttf in Resources */,
+				840C9E7F14AE4F3EAF824BD5 /* Quartz-Bold.ttf in Resources */,
+				798ECD54A5BA4DDD9A30E8DD /* react-native.config.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

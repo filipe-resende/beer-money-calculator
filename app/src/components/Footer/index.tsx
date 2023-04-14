@@ -7,11 +7,11 @@ const Footer = () => {
     return (
         <View style={FooterStyles.view}>
             <Neomorph inner swapShadows style={FooterStyles.neomorph}>
-                <TouchableOpacity
+                <TouchableOpacity style={FooterStyles.touchableOpacity}
                 // onPressIn={() => BackHandler.exitApp()}
                 >
                     <Text style={FooterStyles.text}>
-                        <Icon name="calculator" size={20} color="#818296" />
+                        <Icon name="calculator" size={20} />
                     </Text>
                 </TouchableOpacity>
             </Neomorph>

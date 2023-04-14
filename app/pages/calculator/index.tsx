@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, StatusBar, View } from 'react-native';
 import Keyboards from '../../src/components/Keyboards';
 import Display from '../../src/components/Display';
 import Header from '../../src/components/Header';
 import Footer from '../../src/components/Footer';
-import { CalculatorStyles } from './style';
+import { CalculatorStyles, backgroundColor } from './style';
 import { FormatNumber, GetCurrencyValue } from '../../utils';
 
 function Calculator(): JSX.Element {
@@ -23,9 +23,20 @@ function Calculator(): JSX.Element {
         setHistoricDisplay('');
     };
 
+    const cleanDisplay = () => {
+        setDisplayNumber(["000"]);
+    };
+
     const setSelectedValue = (number: string) => {
         cleanHistoricDisplay();
         setDisplayNumber([...displayNumber, number]);
+    };
+
+
+
+    const removeAllDigits = () => {
+        cleanHistoricDisplay();
+        cleanDisplay();
     };
 
     const removeLastDigit = () => {
@@ -70,6 +81,11 @@ function Calculator(): JSX.Element {
 
     return (
         <SafeAreaView style={CalculatorStyles.safeAreaView}>
+            <StatusBar
+                backgroundColor={backgroundColor}
+                translucent={true}
+                barStyle="light-content"
+            />
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <View>
                     <Header />
@@ -84,6 +100,7 @@ function Calculator(): JSX.Element {
                     <Keyboards
                         percentCalc={percentCalc}
                         setSelectedValue={setSelectedValue}
+                        removeAllDigits={removeAllDigits}
                         removeLastDigit={removeLastDigit}
                     />
                 </View>

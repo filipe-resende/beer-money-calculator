@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
 
+export const backgroundColor = '#e2ecf6';
+const textColor = '#818296';
+const shadowRadius = 4;
+
 const CalculatorStyles = StyleSheet.create({
     safeAreaView: {
-        backgroundColor: '#DDDDDD',
-        flex: 1
+        flex: 1,
+        backgroundColor: backgroundColor
     }
 });
 
@@ -17,9 +21,9 @@ const HeaderStyles = StyleSheet.create({
         textAlign: 'center'
     },
     neomorph: {
-        shadowRadius: 3,
+        shadowRadius: shadowRadius,
         borderRadius: 100,
-        backgroundColor: '#DDDDDD',
+        backgroundColor: backgroundColor,
         width: 60,
         height: 60,
         textAlign: 'center',
@@ -29,17 +33,22 @@ const HeaderStyles = StyleSheet.create({
 
 const FooterStyles = StyleSheet.create({
     view: {
-        paddingTop: '3%',
-        paddingBottom: '2%',
+        padding: 10,
+        flex: 1,
         alignItems: 'center'
     },
-    text: {
+    touchableOpacity: {
+        justifyContent: 'center',
         textAlign: 'center'
     },
+    text: {
+        textAlign: 'center',
+        color: textColor
+    },
     neomorph: {
-        shadowRadius: 3,
+        shadowRadius: shadowRadius,
+        backgroundColor: backgroundColor,
         borderRadius: 10,
-        backgroundColor: '#DDDDDD',
         width: 60,
         height: 60,
         justifyContent: 'center'
@@ -48,15 +57,15 @@ const FooterStyles = StyleSheet.create({
 
 const BackspaceStyles = StyleSheet.create({
     touchableOpacity: {
-        paddingTop: '1%'
+        paddingTop: '2%'
     },
     text: {
         textAlign: 'center'
     },
     neomorph: {
-        shadowRadius: 3,
+        backgroundColor: backgroundColor,
+        shadowRadius: shadowRadius,
         borderRadius: 60,
-        backgroundColor: '#DDDDDD',
         width: 160,
         height: 60,
         textAlign: 'center',
@@ -66,9 +75,9 @@ const BackspaceStyles = StyleSheet.create({
 
 const NumericStyles = StyleSheet.create({
     view: {
+        flex: 1,
         paddingStart: '20%',
-        paddingEnd: '15%',
-        flex: 1
+        paddingEnd: '15%'
     },
     viewText: {
         flex: 1,
@@ -82,23 +91,25 @@ const NumericStyles = StyleSheet.create({
         paddingStart: '3%',
         paddingEnd: '3%',
         marginHorizontal: '1%',
-        marginTop: '1%',
+        marginTop: '2%',
         marginBottom: '2%',
         textAlign: 'center',
         justifyContent: 'center'
     },
     text: {
-        color: '#818296',
+        color: textColor,
         textAlign: 'center',
         alignItems: 'center',
-        fontSize: 32
+        fontSize: 32,
+        fontWeight: 'bold',
+        fontFamily: 'Gilroy-Bold'
     },
     neomorph: {
-        shadowRadius: 3,
+        backgroundColor: backgroundColor,
+        shadowRadius: shadowRadius,
         borderRadius: 100,
-        backgroundColor: '#DDDDDD',
-        width: 60,
-        height: 60
+        width: 58,
+        height: 58
     }
 });
 
@@ -114,27 +125,31 @@ const PercentStyles = StyleSheet.create({
     row: {
         justifyContent: 'center',
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'nowrap'
     },
     button: {
         paddingStart: '3%',
         paddingEnd: '3%',
         marginHorizontal: '1%',
-        marginTop: '1%',
+        marginTop: '2%',
         marginBottom: '2%',
         textAlign: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexWrap: 'nowrap'
     },
     text: {
-        color: '#818296',
+        color: textColor,
         textAlign: 'center',
         alignItems: 'center',
-        fontSize: 20
+        fontSize: 16,
+        fontWeight: 'bold',
+        fontFamily: 'Gilroy-Bold',
+        flexWrap: 'nowrap'
     },
     neomorph: {
-        shadowRadius: 3,
+        shadowRadius: shadowRadius,
+        backgroundColor: backgroundColor,
         borderRadius: 10,
-        backgroundColor: '#DDDDDD',
         width: 60,
         height: 60
     }
@@ -145,45 +160,65 @@ const HistoricStyles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     neomorph: {
-        shadowRadius: 10,
+        shadowRadius: shadowRadius,
+        backgroundColor: backgroundColor,
         borderRadius: 40,
-        backgroundColor: '#DDDDDD',
         width: 330,
         height: 125,
         margin: '5%',
         justifyContent: 'center'
     },
     text: {
-        color: '#818296',
+        color: textColor,
         alignSelf: 'flex-end',
         fontSize: 32,
-        marginEnd: '5%'
+        marginEnd: '5%',
+        fontWeight: 'bold'
     }
 });
 
 const DisplayStyles = StyleSheet.create({
+    touchableOpacity: {
+        padding: '5%'
+    },
     view: {
         alignItems: 'center'
     },
-    neomorph: {
-        shadowRadius: 10,
+    neomorphOut: {
+        shadowRadius: 3,
         borderRadius: 40,
-        backgroundColor: '#DDDDDD',
+        backgroundColor: '#e2ecf6',
         width: 330,
-        height: 125,
-        margin: '5%',
-        justifyContent: 'center'
+        height: 140,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    neomorphInner: {
+        justifyContent: 'center',
+        shadowRadius: 7,
+        borderRadius: 40,
+        backgroundColor: '#a8b79a',
+        width: 310,
+        height: 120,
+        alignItems: 'center',
+        borderColor: 'rgba(0, 0, 0, .40)',
+        borderWidth: 4,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
     },
     text: {
-        color: '#818296',
+        color: 'rgba(64, 66, 62, 1)',
         alignSelf: 'flex-end',
-        fontSize: 32,
-        marginEnd: '5%'
+        fontSize: 36,
+        marginEnd: '5%',
+        fontFamily: 'Quartz-Bold',
+        letterSpacing: 5
     },
     historicText: {
-        color: '#818296',
+        color: 'rgba(64, 66, 62, 0.50)',
         alignSelf: 'flex-end',
-        fontSize: 12,
+        fontFamily: 'Quartz-Bold',
+        fontSize: 20,
         marginEnd: '5%'
     }
 });
