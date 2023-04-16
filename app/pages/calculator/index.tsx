@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, View } from 'react-native';
+import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native';
 import Keyboards from '../../src/components/Keyboards';
 import Display from '../../src/components/Display';
 import Header from '../../src/components/Header';
@@ -10,10 +10,12 @@ import LinearGradient from 'react-native-linear-gradient';
 
 function Calculator(): JSX.Element {
     const [historicDisplay, setHistoricDisplay] = useState<string>('');
-    const [displayNumber, setDisplayNumber] = useState<string[]>([]);
+
+    const [displayCurreny, setDisplayCurrency] = useState<string>('0.00');
+    const [displayCharacters, setDisplayCharacters] = useState<string[]>([]);
 
     const updateHistoricDisplay = (percent: string, isSub: boolean) => {
-        const historicValue = `${FormatNumber(displayNumber)} ${
+        const historicValue = `${FormatNumber(displayCharacters)} ${
             isSub ? '+' : '-'
         } ${percent}% = `;
 
@@ -24,13 +26,21 @@ function Calculator(): JSX.Element {
         setHistoricDisplay('');
     };
 
+    const setDisplayCurrencyFormat = (displayNumbers: string[]) => {
+        var defaultNumber = FormatNumber(displayNumbers);
+        setDisplayCurrency(defaultNumber);
+    };
+
     const cleanDisplay = () => {
-        setDisplayNumber(['000']);
+        setDisplayCharacters([]);
+        setDisplayCurrencyFormat(['000']);
     };
 
     const setSelectedValue = (number: string) => {
+        const displayNumbers = [...displayCharacters, number];
         cleanHistoricDisplay();
-        setDisplayNumber([...displayNumber, number]);
+        setDisplayCharacters(displayNumbers);
+        setDisplayCurrencyFormat(displayNumbers);
     };
 
     const removeAllDigits = () => {
@@ -40,9 +50,10 @@ function Calculator(): JSX.Element {
 
     const removeLastDigit = () => {
         cleanHistoricDisplay();
-        const displayNumbers = [...displayNumber];
+        const displayNumbers = [...displayCharacters];
         displayNumbers.splice(-1);
-        setDisplayNumber(displayNumbers);
+        setDisplayCharacters(displayNumbers);
+        setDisplayCurrencyFormat(displayNumbers);
     };
 
     const percentCalc = (percent: string, isSub: boolean) => {
@@ -54,12 +65,13 @@ function Calculator(): JSX.Element {
         const displayString = converterToString(totalCalc);
 
         if (
-            displayNumber.length &&
-            displayNumber.some((value) => value !== '0')
+            displayCharacters.length &&
+            displayCharacters.some((value) => value !== '0')
         )
             updateHistoricDisplay(percent, isSub);
 
-        setDisplayNumber([...displayString]);
+        setDisplayCharacters([...displayString]);
+        setDisplayCurrencyFormat([...displayString]);
     };
 
     const converterToString = (totalCalc: number) => {
@@ -70,7 +82,7 @@ function Calculator(): JSX.Element {
     };
 
     const convertToNumber = () => {
-        const numericString = GetCurrencyValue(displayNumber).replace(
+        const numericString = GetCurrencyValue(displayCharacters).replace(
             /[^\d.]/g,
             ''
         );
@@ -98,7 +110,7 @@ function Calculator(): JSX.Element {
                     </View>
                     <View>
                         <Display
-                            keyboards={displayNumber}
+                            keyboards={displayCurreny}
                             historicKeyboards={historicDisplay}
                         />
                     </View>

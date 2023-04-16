@@ -16,28 +16,34 @@ const BackspaceKeyboard = ({
     const [innerNeomorph, setInnerNeomorph] = useState(false);
 
     return (
-        <TouchableOpacity
-            activeOpacity={0.8}
-            style={BackspaceStyles.touchableOpacity}
-            onPress={() => {
-                removeLastDigit();
-            }}
-            onLongPress={() => removeAllDigits()}
-            onPressIn={() => setInnerNeomorph(true)}
-            onPressOut={() => setInnerNeomorph(false)}
-        >
-            <Neomorph
-                inner={innerNeomorph}
-                swapShadows
-                style={BackspaceStyles.neomorph}
+        <View>
+            <TouchableOpacity
+                activeOpacity={0.8}
+                style={BackspaceStyles.touchableOpacity}
+                onPress={() => {
+                    removeLastDigit();
+                }}
+                onLongPress={() => removeAllDigits()}
+                onPressIn={() => setInnerNeomorph(true)}
+                onPressOut={() => setInnerNeomorph(false)}
             >
-                <View>
-                    <Text style={BackspaceStyles.text}>
-                        <Icon name="backspace" size={20} color={textColor} />
-                    </Text>
-                </View>
-            </Neomorph>
-        </TouchableOpacity>
+                <Neomorph
+                    inner={innerNeomorph}
+                    swapShadows
+                    style={BackspaceStyles.neomorph}
+                >
+                    <View>
+                        <Text style={BackspaceStyles.text}>
+                            <Icon
+                                name="backspace"
+                                size={24}
+                                color={textColor}
+                            />
+                        </Text>
+                    </View>
+                </Neomorph>
+            </TouchableOpacity>
+        </View>
     );
 };
 

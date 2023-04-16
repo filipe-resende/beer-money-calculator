@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const backgroundColor = '#B4BACA';
+export const backgroundColor = '#f2f3f7';
 export const textColor = '#676878';
 const shadowRadius = 4;
 
@@ -18,18 +18,20 @@ const HeaderStyles = StyleSheet.create({
     view: {
         paddingBottom: '2%',
         paddingEnd: '10%',
-        alignItems: 'flex-end'
+        paddingStart: '10%',
+        alignItems: 'flex-end',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     text: {
         textAlign: 'center'
     },
     neomorph: {
+        backgroundColor: backgroundColor,
         shadowRadius: shadowRadius,
         borderRadius: 100,
-        backgroundColor: backgroundColor,
-        width: 60,
-        height: 60,
-        textAlign: 'center',
+        width: 45,
+        height: 45,
         justifyContent: 'center'
     }
 });
@@ -52,15 +54,17 @@ const FooterStyles = StyleSheet.create({
         shadowRadius: shadowRadius,
         backgroundColor: backgroundColor,
         borderRadius: 10,
-        width: 60,
-        height: 60,
+        width: 40,
+        height: 40,
         justifyContent: 'center'
     }
 });
 
 const BackspaceStyles = StyleSheet.create({
     touchableOpacity: {
-        paddingTop: '2%'
+        flex: 1,
+        justifyContent: 'center',
+        margin: '2%'
     },
     text: {
         textAlign: 'center'
@@ -69,8 +73,8 @@ const BackspaceStyles = StyleSheet.create({
         backgroundColor: backgroundColor,
         shadowRadius: shadowRadius,
         borderRadius: 60,
-        width: 160,
-        height: 60,
+        width: 150,
+        height: 68,
         textAlign: 'center',
         justifyContent: 'center'
     }
@@ -78,26 +82,21 @@ const BackspaceStyles = StyleSheet.create({
 
 const NumericStyles = StyleSheet.create({
     view: {
-        flex: 1,
-        paddingStart: '20%',
-        paddingEnd: '15%'
+        flex: 0.8,
+        justifyContent: 'center'
     },
     viewText: {
         flex: 1,
         justifyContent: 'center'
     },
     row: {
+        justifyContent: 'center',
         flexDirection: 'row',
         flexWrap: 'wrap'
     },
     button: {
-        paddingStart: '3%',
-        paddingEnd: '3%',
-        marginHorizontal: '1%',
-        marginTop: '2%',
-        marginBottom: '2%',
-        textAlign: 'center',
-        justifyContent: 'center'
+        alignSelf: 'flex-end',
+        margin: '2%'
     },
     text: {
         color: textColor,
@@ -111,8 +110,37 @@ const NumericStyles = StyleSheet.create({
         backgroundColor: backgroundColor,
         shadowRadius: shadowRadius,
         borderRadius: 100,
-        width: 60,
-        height: 60
+        width: 68,
+        height: 68
+    }
+});
+
+const OperationKeyboardStyles = StyleSheet.create({
+    view: {
+        flex: 0.3
+    },
+    button: {
+        margin: '10%'
+    },
+    neomorph: {
+        shadowRadius: shadowRadius,
+        backgroundColor: backgroundColor,
+        borderRadius: 10,
+        width: 45,
+        height: 45
+    },
+    viewText: {
+        flex: 1,
+        justifyContent: 'center'
+    },
+    text: {
+        color: textColor,
+        textAlign: 'center',
+        alignItems: 'center',
+        fontSize: 16,
+        fontWeight: 'bold',
+        fontFamily: 'Gilroy-Bold',
+        flexWrap: 'nowrap'
     }
 });
 
@@ -183,16 +211,18 @@ const HistoricStyles = StyleSheet.create({
 const DisplayStyles = StyleSheet.create({
     touchableOpacity: {
         paddingTop: '2%',
-        paddingBottom: '4%'
+        paddingBottom: '4%',
+        flexWrap: 'nowrap'
     },
     view: {
-        alignItems: 'center'
+        alignItems: 'center',
+        flexWrap: 'nowrap'
     },
     neomorphOut: {
         shadowRadius: 3,
         borderRadius: 40,
         backgroundColor: backgroundColor,
-        width: 330,
+        width: 350,
         height: 140,
         justifyContent: 'center',
         alignItems: 'center'
@@ -212,7 +242,7 @@ const DisplayStyles = StyleSheet.create({
         shadowRadius: 7,
         borderRadius: 40,
         backgroundColor: '#a8b79a',
-        width: 310,
+        width: 330,
         height: 120,
         alignItems: 'center',
         borderColor: 'rgba(0, 0, 0, .40)',
@@ -245,5 +275,6 @@ export {
     NumericStyles,
     PercentStyles,
     DisplayStyles,
-    HistoricStyles
+    HistoricStyles,
+    OperationKeyboardStyles
 };

@@ -8,7 +8,7 @@ import { FormatNumber } from '../../../utils';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface DisplayProps {
-    keyboards: string[];
+    keyboards: string;
     historicKeyboards: string;
 }
 
@@ -32,7 +32,7 @@ const Display = ({ keyboards, historicKeyboards }: DisplayProps) => {
                                 {historicKeyboards}
                             </Text>
                             <Text style={DisplayStyles.text}>
-                                {FormatNumber(keyboards)}
+                                {keyboards}
                             </Text>
                         </LinearGradient>
                     </Neomorph>
