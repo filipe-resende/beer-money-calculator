@@ -1,26 +1,39 @@
 import PercentKeyboard from './Percent';
 import NumericKeyboard from './Numeric';
 import { View } from 'react-native';
-import OperationsKeyboard from './Operation';
-
+import People from '../People';
 interface KeyboardProps {
     setSelectedValue: (value: string) => void;
     removeLastDigit: () => void;
     removeAllDigits: () => void;
     percentCalc: (percent: string, isSub: boolean) => void;
+    addPeopleCount: () => void;
+    removePeopleCount: () => void;
+    divideAccountBetweenPeople: () => void;
+    peopleCount: number;
 }
 
 const Keyboards = ({
     setSelectedValue,
     removeLastDigit,
     removeAllDigits,
-    percentCalc
+    percentCalc,
+    addPeopleCount,
+    removePeopleCount,
+    divideAccountBetweenPeople,
+    peopleCount
 }: KeyboardProps) => {
     return (
         <View>
             <PercentKeyboard
                 percentCalc={percentCalc}
                 keyboards={['5', '10', '15', '20']}
+            />
+            <People
+                divideAccountBetweenPeople={divideAccountBetweenPeople}
+                addPeopleCount={addPeopleCount}
+                removePeopleCount={removePeopleCount}
+                peopleCount={peopleCount}
             />
             <View
                 style={{

@@ -19,7 +19,7 @@ const PercentsKeyboard = ({ keyboards, percentCalc }: EqualsKeyboardProps) => {
     );
 
     return (
-        <View style={PercentStyles.view}>
+        <View>
             <View style={PercentStyles.row}>
                 {keyboards.map((keyboard, index) => (
                     <TouchableOpacity

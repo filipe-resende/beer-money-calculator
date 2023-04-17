@@ -4,7 +4,6 @@ import Clipboard from '@react-native-clipboard/clipboard';
 
 import React from 'react';
 import { DisplayStyles } from '../../../pages/calculator/style';
-import { FormatNumber } from '../../../utils';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface DisplayProps {
@@ -15,6 +14,7 @@ interface DisplayProps {
 const Display = ({ keyboards, historicKeyboards }: DisplayProps) => {
     return (
         <TouchableOpacity
+            activeOpacity={0.8}
             style={DisplayStyles.touchableOpacity}
             onPress={() => Clipboard.setString(historicKeyboards)}
         >
@@ -32,7 +32,7 @@ const Display = ({ keyboards, historicKeyboards }: DisplayProps) => {
                                 {historicKeyboards}
                             </Text>
                             <Text style={DisplayStyles.text}>
-                                {keyboards}
+                                {keyboards.length ? keyboards : 'R$ 0,00'}
                             </Text>
                         </LinearGradient>
                     </Neomorph>

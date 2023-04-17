@@ -4,27 +4,31 @@ import {
     Text,
     StatusBar,
     BackHandler,
-    View,
-    Switch
+    View
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {
-    HeaderStyles,
-    textColor
-} from '../../../pages/calculator/style';
-import React, { useState } from 'react';
+import { HeaderStyles, textColor } from '../../../pages/calculator/style';
+import React from 'react';
 
 const Header = () => {
-    const [neumorph, setNuemorph] = React.useState(false);    
+    const [innerNeomorph, setInnerNeomorph] = React.useState(false);
+
     const statusBarHeight = StatusBar.currentHeight
-        ? StatusBar.currentHeight + 10
-        : 64;
-        
+        ? StatusBar.currentHeight + 5
+        : 40;
+
     return (
         <View style={[HeaderStyles.view, { paddingTop: statusBarHeight }]}>
-            <Switch value={neumorph} onValueChange={setNuemorph} />
-            <Neomorph swapShadows style={HeaderStyles.neomorph}>
-                <TouchableOpacity onPressIn={() => BackHandler.exitApp()}>
+            <Neomorph
+                inner={innerNeomorph}
+                swapShadows
+                style={HeaderStyles.neomorph}
+            >
+                <TouchableOpacity
+                    onPress={() => BackHandler.exitApp()}
+                    onPressIn={() => setInnerNeomorph(true)}
+                    onPressOut={() => setInnerNeomorph(false)}
+                >
                     <Text style={HeaderStyles.text}>
                         <Icon name="power-off" size={16} color={textColor} />
                     </Text>

@@ -16,12 +16,9 @@ const CalculatorStyles = StyleSheet.create({
 
 const HeaderStyles = StyleSheet.create({
     view: {
-        paddingBottom: '2%',
-        paddingEnd: '10%',
-        paddingStart: '10%',
-        alignItems: 'flex-end',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end',
+        marginEnd:'8%',
+        flexDirection: 'row'
     },
     text: {
         textAlign: 'center'
@@ -38,9 +35,9 @@ const HeaderStyles = StyleSheet.create({
 
 const FooterStyles = StyleSheet.create({
     view: {
-        padding: 10,
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 5
     },
     touchableOpacity: {
         justifyContent: 'center',
@@ -145,10 +142,6 @@ const OperationKeyboardStyles = StyleSheet.create({
 });
 
 const PercentStyles = StyleSheet.create({
-    view: {
-        marginBottom: '2%',
-        flex: 1
-    },
     viewText: {
         flex: 1,
         justifyContent: 'center'
@@ -159,8 +152,8 @@ const PercentStyles = StyleSheet.create({
         flexWrap: 'nowrap'
     },
     button: {
-        paddingStart: '3%',
-        paddingEnd: '3%',
+        paddingStart: '2%',
+        paddingEnd: '2%',
         marginHorizontal: '1%',
         marginTop: '2%',
         marginBottom: '2%',
@@ -172,7 +165,7 @@ const PercentStyles = StyleSheet.create({
         color: textColor,
         textAlign: 'center',
         alignItems: 'center',
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 'bold',
         fontFamily: 'Gilroy-Bold',
         flexWrap: 'nowrap'
@@ -181,8 +174,8 @@ const PercentStyles = StyleSheet.create({
         shadowRadius: shadowRadius,
         backgroundColor: backgroundColor,
         borderRadius: 10,
-        width: 60,
-        height: 60
+        width: 50,
+        height: 50
     }
 });
 
@@ -211,7 +204,7 @@ const HistoricStyles = StyleSheet.create({
 const DisplayStyles = StyleSheet.create({
     touchableOpacity: {
         paddingTop: '2%',
-        paddingBottom: '4%',
+        paddingBottom: '2%',
         flexWrap: 'nowrap'
     },
     view: {
@@ -223,7 +216,7 @@ const DisplayStyles = StyleSheet.create({
         borderRadius: 40,
         backgroundColor: backgroundColor,
         width: 350,
-        height: 140,
+        height: 120,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -243,7 +236,7 @@ const DisplayStyles = StyleSheet.create({
         borderRadius: 40,
         backgroundColor: '#a8b79a',
         width: 330,
-        height: 120,
+        height: 100,
         alignItems: 'center',
         borderColor: 'rgba(0, 0, 0, .40)',
         borderWidth: 4,

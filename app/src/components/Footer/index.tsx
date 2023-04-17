@@ -7,9 +7,7 @@ const Footer = () => {
     return (
         <View style={FooterStyles.view}>
             <Neomorph inner swapShadows style={FooterStyles.neomorph}>
-                <TouchableOpacity style={FooterStyles.touchableOpacity}
-                // onPressIn={() => BackHandler.exitApp()}
-                >
+                <TouchableOpacity style={FooterStyles.touchableOpacity}>
                     <Text style={FooterStyles.text}>
                         <Icon name="calculator" size={20} />
                     </Text>
