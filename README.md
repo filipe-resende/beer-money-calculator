@@ -1,4 +1,4 @@
-# API de Calculadora de Porcentagem - React Native 📱
+# Aplicativo Mobile de Calculadora de Porcentagem - React Native 📱
 
 ## 📖 Sobre o Projeto
 
