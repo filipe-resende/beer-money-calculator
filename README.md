@@ -2,7 +2,7 @@
 
 ## 📖 Sobre o Projeto
 
-Este projeto é uma API criada em React Native com o objetivo de calcular porcentagens de valores. A aplicação permite que os usuários informem um valor e uma porcentagem, e o sistema retorna o valor correspondente. Este projeto foi desenvolvido como parte de um estudo sobre React Native e tem como foco a construção de uma API simples para cálculo matemático.
+Este projeto é um **aplicativo mobile** criado em **React Native** com o objetivo de calcular porcentagens de valores. A aplicação permite que os usuários informem um valor e uma porcentagem, e o sistema retorna o valor correspondente. Este projeto foi desenvolvido como parte de um estudo sobre **React Native** e tem como foco a construção de uma aplicação simples para cálculos matemáticos.
 
 ## 🔧 Funcionalidades
 
@@ -61,24 +61,6 @@ Se for rodar o projeto no dispositivo, tenha o **React Native CLI** instalado e 
 - `/utils`: Funções auxiliares para o cálculo de porcentagens.
 
 ### API Endpoints
-
-A API tem os seguintes endpoints:
-
-- **POST `/api/calcular`**: 
-  - **Descrição:** Realiza o cálculo da porcentagem.
-  - **Request Body:** 
-    ```json
-    {
-      "valor": 200,
-      "porcentagem": 15
-    }
-    ```
-  - **Resposta:**
-    ```json
-    {
-      "resultado": 30
-    }
-    ```
 
 ## 🤝 Contribuição
 
